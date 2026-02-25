@@ -1,1 +1,51 @@
-
+#include <stdio.h> 
+ 
+void llenarNotas(int tabla[10][7]) { 
+    for (int i = 0; i < 10; i++) { 
+        printf("Alumno %d:\n", i + 1); 
+        for (int j = 0; j < 7; j++) { 
+            printf("  Nota %d: ", j + 1); 
+            scanf("%d", &tabla[i][j]); 
+        } 
+    } 
+} 
+ 
+void calcularPromedioAlumno(int tabla[10][7], float resultados[10]) { 
+    for (int i = 0; i < 10; i++) { 
+        float suma = 0; 
+        for (int j = 0; j < 7; j++) { 
+            suma = suma + tabla[i][j]; 
+        } 
+        resultados[i] = suma / 7; 
+    } 
+} 
+ 
+void calcularPromedioGrupo(float promediosAlumnos[10], float *resultadoGrupo) { 
+    float sumaTotal = 0; 
+    for (int i = 0; i < 10; i++) { 
+        sumaTotal = sumaTotal + promediosAlumnos[i]; 
+    } 
+    *resultadoGrupo = sumaTotal / 10; 
+} 
+ 
+int main() { 
+    int notas[10][7]; 
+    float mediasAlumnos[10]; 
+    float mediaGrupo; 
+ 
+    llenarNotas(notas); 
+     
+    calcularPromedioAlumno(notas, mediasAlumnos); 
+     
+    calcularPromedioGrupo(mediasAlumnos, &mediaGrupo); 
+ 
+    printf("\n--- RESULTADOS POR ALUMNO ---\n"); 
+    for (int i = 0; i < 10; i++) { 
+        printf("Alumno %d - Promedio: %.2f\n", i + 1, mediasAlumnos[i]); 
+    } 
+ 
+    printf("\n--- RESULTADO DEL GRUPO ---\n"); 
+    printf("Promedio general: %.2f\n", mediaGrupo); 
+ 
+    return 0; 
+} 
