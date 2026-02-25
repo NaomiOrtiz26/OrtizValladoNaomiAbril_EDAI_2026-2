@@ -1,1 +1,77 @@
 
+#include <stdio.h>
+
+void main()
+{
+    int suma, resta, multi, divi, modulo, div_entera;
+    int n1, n2;
+    char opcion;
+   
+    do {
+        printf("\n--- Calculadora Epica ---\n");
+        printf("a) Suma\n");
+        printf("b) Resta\n");
+        printf("c) Multiplicacion\n");
+        printf("d) Division\n");
+        printf("e) Modulo\n");
+        printf("f) Division entera\n");
+        printf("g) Salir\n");
+        printf("\nTu opcion es: ");
+       
+        scanf(" %c", &opcion);
+       
+        if (opcion >= 'a' && opcion <= 'f') {
+            printf("Ingresa el primer numero: ");
+            scanf("%d", &n1);
+            printf("Ingresa el segundo numero: ");
+            scanf("%d", &n2);
+        }
+
+        switch (opcion) {
+            case 'a': {
+                int *ptr = &suma;
+                *ptr = n1 + n2;
+                printf("Resultado en main: %d\n", suma);
+                break;
+            }
+            case 'b': {
+                int *ptr = &resta;
+                *ptr = n1 - n2;
+                printf("Resultado en main: %d\n", resta);
+                break;
+            }
+            case 'c': {
+                int *ptr = &multi;
+                *ptr = n1 * n2;
+                printf("Resultado en main: %d\n", multi);
+                break;
+            }
+            case 'd': {
+                if (n2 != 0) {
+                    int *ptr = &divi;
+                    *ptr = n1 / n2;
+                    printf("Resultado en main: %d\n", divi);
+                } else {
+                    printf("Error: No se puede dividir entre cero.\n");
+                }
+                break;
+            }
+            case 'e': {
+                int *ptr = &modulo;
+                *ptr = n1 % n2;
+                printf("Resultado en main (Residuo): %d\n", modulo);
+                break;
+            }
+            case 'f': {
+                int *ptr = &div_entera;
+                *ptr = (int)(n1 / n2);
+                printf("Resultado en main (Cociente): %d\n", div_entera);
+                break;
+            }
+            case 'g':
+                printf("Saliendo... Gracias por usar la calculadora.\n");
+                break;
+            default:
+                printf("Opcion invalida!\n");
+        }
+    } while (opcion != 'g');
