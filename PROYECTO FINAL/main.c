@@ -17,7 +17,12 @@ typedef struct {
 } Sistema;
 
 /* =========================================
-        VALIDAR ID REPETIDO
+            VALIDAR ID REPETIDO
+=========================================
+Recorre una lista enlazada para verificar
+si el identificador proporcionado ya existe.
+Si encuentra una coincidencia devuelve 1,
+de lo contrario devuelve 0.
 ========================================= */
 
 int existeID(Lista *l, char id[]) {
@@ -39,7 +44,12 @@ int existeID(Lista *l, char id[]) {
 }
 
 /* =========================================
-            MOSTRAR LISTAS
+            MOSTRAR REGIONES
+=========================================
+Recorre la lista de regiones mostrando
+únicamente su nombre junto con un número
+consecutivo para facilitar la selección
+por parte del usuario.
 ========================================= */
 
 void mostrarRegiones(Lista *l) {
@@ -123,7 +133,12 @@ void mostrarCompanias(Lista *l) {
 }
 
 /* =========================================
-            OBTENER ELEMENTOS
+          OBTENER REGIÓN
+=========================================
+Busca una región dentro de la lista según
+la posición seleccionada por el usuario.
+Devuelve un apuntador a la región o NULL
+si la posición no existe.
 ========================================= */
 
 Region *obtenerRegion(Lista *l, int pos) {
@@ -212,7 +227,12 @@ Compania *obtenerCompania(Lista *l, int pos) {
 }
 
 /* =========================================
-            AGREGAR REGION
+            AGREGAR REGIÓN
+=========================================
+Solicita los datos de una nueva región,
+verifica que el ID no esté repetido y,
+si es válido, la almacena dentro de la
+lista correspondiente.
 ========================================= */
 
 void agregarRegion(Sistema *s) {
@@ -239,6 +259,12 @@ void agregarRegion(Sistema *s) {
 
 /* =========================================
             AGREGAR ZONA
+=========================================
+Permite registrar una nueva zona militar.
+Antes de crearla verifica que exista al
+menos una región. Posteriormente asocia
+la zona con la región seleccionada por
+el usuario.
 ========================================= */
 
 void agregarZona(Sistema *s) {
@@ -289,7 +315,13 @@ void agregarZona(Sistema *s) {
 }
 
 /* =========================================
-        AGREGAR REGIMIENTO
+         AGREGAR REGIMIENTO
+=========================================
+Registra un nuevo regimiento indicando
+su nombre, tipo y la zona a la que
+pertenece. El sistema valida que exista
+una zona disponible antes de realizar
+el registro.
 ========================================= */
 
 void agregarRegimiento(Sistema *s) {
@@ -379,7 +411,12 @@ void agregarRegimiento(Sistema *s) {
 }
 
 /* =========================================
-            AGREGAR BATALLON
+          AGREGAR BATALLÓN
+=========================================
+Crea un nuevo batallón asignándole un
+número, tipo militar y el regimiento al
+que pertenece. También valida que exista
+al menos un regimiento registrado.
 ========================================= */
 
 void agregarBatallon(Sistema *s) {
@@ -469,7 +506,11 @@ void agregarBatallon(Sistema *s) {
 }
 
 /* =========================================
-            AGREGAR COMPANIA
+          AGREGAR COMPAÑÍA
+=========================================
+Permite registrar una compañía y asociarla
+con un batallón previamente creado dentro
+de la estructura militar.
 ========================================= */
 
 void agregarCompania(Sistema *s) {
@@ -520,7 +561,12 @@ void agregarCompania(Sistema *s) {
 }
 
 /* =========================================
-            AGREGAR SOLDADO
+          AGREGAR SOLDADO
+=========================================
+Registra un soldado indicando sus datos
+personales, grado militar y la compañía
+a la que pertenece. Además valida la
+existencia previa de compañías.
 ========================================= */
 
 void agregarSoldado(Sistema *s) {
@@ -620,7 +666,10 @@ void agregarSoldado(Sistema *s) {
 }
 
 /* =========================================
-            VISUALIZAR DATOS
+         VISUALIZAR REGIONES
+=========================================
+Muestra la información completa de todas
+las regiones almacenadas en el sistema.
 ========================================= */
 
 void verRegiones(Lista *l) {
@@ -719,7 +768,11 @@ void verSoldados(Lista *l) {
 
 /* =========================================
                 MENUS
-========================================= */
+========================================= 
+Presenta las opciones para registrar los
+distintos niveles de la estructura militar.
+Dependiendo de la opción seleccionada se
+invoca la función correspondiente. */
 
 void menuRegistro(Sistema *s) {
 
@@ -827,6 +880,11 @@ void menuPrincipal(Sistema *s) {
 
 /* =========================================
                     MAIN
+========================================= 
+Punto de entrada del programa. Inicializa
+las listas que forman el sistema militar
+y posteriormente ejecuta el menú principal
+para interactuar con el usuario.
 ========================================= */
 
 int main() {
